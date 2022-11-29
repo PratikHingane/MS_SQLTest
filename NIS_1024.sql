@@ -88,3 +88,32 @@ CREATE TABLE Computer_NIS1024(
 
    SELECT * FROM Manufacturer_NIS1024
       WHERE MfName LIKE (SELECT MfName FROM Computer_NIS1024 WHERE EmployeeID IS NULL)
+
+ --6. Create a VIEW with the list of employee name, their computer serial
+ --   number, and the city that they were manufactured in. Use a join.
+  CREATE VIEW vw_abc
+  AS
+    SELECT a.EmpName,b.SerialNumber,c.City
+	FROM Employee_NIS1024 a
+	INNER JOIN Computer_NIS1024 b
+	ON a.EmployeeID=b.EmployeeID
+	INNER JOIN Manufacturer_NIS1024 c
+	ON b.MfName=c.MfName;
+
+ SELECT * FROM vw_abc;
+
+ --7. Write a Stored Procedure to accept EmployeeId as parameter and
+ --   List the serial number, manufacturer name, model, and weight of
+ --   computer that belong to the specified Employeeid.
+ CREATE PROCEDURE sp_emp_cmp_NIS1024
+AS
+BEGIN
+    SELECT e.EmployeeID, c.SerialNumber, m.MfName, c.Model, c.Weight
+    FROM Employee_NIS1024 e
+        INNER JOIN Computer_NIS1024 c
+        ON e.EmployeeID = c.EmployeeID
+        INNER JOIN Manufacturer_NIS1024 m
+        ON c.MfName = m.MfName
+END
+  
+  EXEC sp_emp_cmp_NIS1024;
