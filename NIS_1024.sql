@@ -83,3 +83,8 @@ CREATE TABLE Computer_NIS1024(
  --4. List the serial numbers for computers that have a weight below average.
     SELECT SerialNumber FROM Computer_NIS1024 
 	  WHERE Weight < (SELECT AVG(WEIGHT) FROM Computer_NIS1024);
+
+ --5.List the manufacturer names of companies that do not have any computers in use. Use a subquery.
+
+   SELECT * FROM Manufacturer_NIS1024
+      WHERE MfName LIKE (SELECT MfName FROM Computer_NIS1024 WHERE EmployeeID IS NULL)
