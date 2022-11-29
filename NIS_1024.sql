@@ -69,3 +69,17 @@ CREATE TABLE Computer_NIS1024(
 
 	SELECT MfName FROM Manufacturer_NIS1024
 	   WHERE CITY LIKE 'SOUTH DAKOTA';
+
+  -- 2. Calculate the average weight of the computers in use
+      SELECT AVG(Weight) AS [Average Weight]
+	   FROM Computer_NIS1024
+	   WHERE EmployeeID IS NOT NULL;
+
+ -- 3. List the employee names for employees whose area_code starts with 2
+     
+     SELECT * FROM Employee_NIS1024
+	   WHERE AreaCode LIKE '2%';
+
+ --4. List the serial numbers for computers that have a weight below average.
+    SELECT SerialNumber FROM Computer_NIS1024 
+	  WHERE Weight < (SELECT AVG(WEIGHT) FROM Computer_NIS1024);
