@@ -36,3 +36,33 @@ CREATE TABLE Computer_NIS1024(
   REFERENCES Employee_NIS1024(EmployeeID)
   );
 
+  --Adding AREACODE column in Employee_NIS1024
+  ALTER TABLE Employee_NIS1024 
+    ADD AreaCode INT;
+
+	ALTER TABLE Manufacturer_NIS1024
+	 ALTER Column City VARCHAR(20);
+	--Insertion of data
+	INSERT INTO Employee_NIS1024 VALUES ('Pratik','8149916992','pratik@gmail.com',444606),
+	                                    ('Prajot','8149916993','prajot@gmail.com',444607),
+										('Anand','8149916994','anand@gmail.com',444601);
+
+		SELECT * FROM Employee_NIS1024;
+
+	Insert into Manufacturer_Nis1024 VALUES('Dell','Pune','Maharashtra'),
+                                        ('HP','Delhi','Delhi'),
+                                        ('Asus','South Dakota','Karnataka');
+
+
+
+	SELECT * FROM Manufacturer_NIS1024;
+
+	INSERT INTO Computer_Nis1024 VALUES('HP','Pavillion',2,1),
+                                    ('Dell','Gamers',4,3),
+                                    ('ASUS','Ideapad',3,null);
+
+   SELECT * FROM Employee_NIS1024;
+   SELECT * FROM Manufacturer_NIS1024;
+   SELECT * FROM Computer_NIS1024;
+
+	--1. List the manufacturers’ names that are located in South Dakota.
