@@ -66,3 +66,6 @@ CREATE TABLE Computer_NIS1024(
    SELECT * FROM Computer_NIS1024;
 
 	--1. List the manufacturers’ names that are located in South Dakota.
+
+	SELECT MfName FROM Manufacturer_NIS1024
+	   WHERE CITY LIKE 'SOUTH DAKOTA';
